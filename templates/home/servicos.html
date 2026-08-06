@@ -1,0 +1,102 @@
+{% extends 'home/base.html' %}
+
+{% block title %}Serviços - Pulse{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Nossos Serviços</h1>
+            <p>Soluções completas em IA para impulsionar seu negócio</p>
+        </div>
+    </section>
+
+    <!-- Serviços Detalhados -->
+    <section class="container">
+        {% for service in services %}
+            {% if forloop.counter|divisibleby:2 %}
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-bottom: 4rem;">
+                <div>
+                    <i class="fas {{ service.icon }}" style="font-size: 4rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
+                    <h3 style="font-size: 2rem; margin-bottom: 1rem; color: var(--dark-color);">{{ service.title }}</h3>
+                    <p style="font-size: 1.1rem; color: #666; line-height: 1.8; margin-bottom: 1.5rem;">{{ service.details }}</p>
+                    <ul style="list-style: none; color: #666;">
+                        <li style="margin-bottom: 0.8rem;"><i class="fas fa-check" style="color: var(--secondary-color); margin-right: 0.5rem;"></i> Soluções personalizadas</li>
+                        <li style="margin-bottom: 0.8rem;"><i class="fas fa-check" style="color: var(--secondary-color); margin-right: 0.5rem;"></i> Suporte contínuo</li>
+                        <li style="margin-bottom: 0.8rem;"><i class="fas fa-check" style="color: var(--secondary-color); margin-right: 0.5rem;"></i> Resultados mensuráveis</li>
+                    </ul>
+                </div>
+                <div style="background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); border-radius: var(--border-radius); padding: 3rem; text-align: center; color: white; min-height: 300px; display: flex; align-items: center; justify-content: center;">
+                    <div>
+                        <i class="fas {{ service.icon }}" style="font-size: 5rem; opacity: 0.3;"></i>
+                        <p style="margin-top: 1rem; font-size: 1.2rem;">{{ service.title }}</p>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-bottom: 4rem;">
+                <div style="background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); border-radius: var(--border-radius); padding: 3rem; text-align: center; color: white; min-height: 300px; display: flex; align-items: center; justify-content: center; order: -1;">
+                    <div>
+                        <i class="fas {{ service.icon }}" style="font-size: 5rem; opacity: 0.3;"></i>
+                        <p style="margin-top: 1rem; font-size: 1.2rem;">{{ service.title }}</p>
+                    </div>
+                </div>
+                <div>
+                    <i class="fas {{ service.icon }}" style="font-size: 4rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
+                    <h3 style="font-size: 2rem; margin-bottom: 1rem; color: var(--dark-color);">{{ service.title }}</h3>
+                    <p style="font-size: 1.1rem; color: #666; line-height: 1.8; margin-bottom: 1.5rem;">{{ service.details }}</p>
+                    <ul style="list-style: none; color: #666;">
+                        <li style="margin-bottom: 0.8rem;"><i class="fas fa-check" style="color: var(--secondary-color); margin-right: 0.5rem;"></i> Soluções personalizadas</li>
+                        <li style="margin-bottom: 0.8rem;"><i class="fas fa-check" style="color: var(--secondary-color); margin-right: 0.5rem;"></i> Suporte contínuo</li>
+                        <li style="margin-bottom: 0.8rem;"><i class="fas fa-check" style="color: var(--secondary-color); margin-right: 0.5rem;"></i> Resultados mensuráveis</li>
+                    </ul>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </section>
+
+    <!-- Processo -->
+    <section class="section-alt">
+        <div class="container">
+            <h2>Nosso Processo</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
+                <div style="text-align: center;">
+                    <div style="width: 60px; height: 60px; background: var(--primary-color); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 700; margin: 0 auto 1rem;">1</div>
+                    <h4 style="margin-bottom: 0.5rem;">Análise</h4>
+                    <p style="color: #666;">Entendemos suas necessidades e desafios</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="width: 60px; height: 60px; background: var(--primary-color); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 700; margin: 0 auto 1rem;">2</div>
+                    <h4 style="margin-bottom: 0.5rem;">Planejamento</h4>
+                    <p style="color: #666;">Desenvolvemos uma estratégia personalizada</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="width: 60px; height: 60px; background: var(--primary-color); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 700; margin: 0 auto 1rem;">3</div>
+                    <h4 style="margin-bottom: 0.5rem;">Implementação</h4>
+                    <p style="color: #666;">Executamos a solução com excelência</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="width: 60px; height: 60px; background: var(--primary-color); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 700; margin: 0 auto 1rem;">4</div>
+                    <h4 style="margin-bottom: 0.5rem;">Suporte</h4>
+                    <p style="color: #666;">Acompanhamos e otimizamos continuamente</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="container">
+        <div style="text-align: center; padding: 3rem 0;">
+            <h2>Vamos Começar?</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem; color: #666;">
+                Agende uma consulta gratuita e descubra como podemos ajudar seu negócio.
+            </p>
+            <a href="{% url 'home:contato' %}" class="cta-button" style="display: inline-block;">
+                <i class="fas fa-calendar"></i> Agendar Consulta
+            </a>
+        </div>
+    </section>
+{% endblock %}
+
+

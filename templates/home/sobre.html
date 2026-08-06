@@ -1,0 +1,152 @@
+{% extends 'home/base.html' %}
+
+{% block title %}Sobre - Pulse{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Sobre a Pulse</h1>
+            <p>Transformando negócios através da inteligência artificial</p>
+        </div>
+    </section>
+
+    <!-- Sobre -->
+    <section class="container">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-bottom: 4rem;">
+            <div>
+                <h2 style="margin-bottom: 1.5rem;">Quem Somos</h2>
+                <p style="font-size: 1.1rem; color: #666; line-height: 1.8; margin-bottom: 1rem;">
+                    A Pulse é uma empresa especializada em soluções de inteligência artificial e automação de processos. 
+                    Nascemos com a missão de democratizar o acesso a tecnologias avançadas, tornando-as acessíveis para 
+                    empresas de todos os tamanhos.
+                </p>
+                <p style="font-size: 1.1rem; color: #666; line-height: 1.8; margin-bottom: 1rem;">
+                    Com uma equipe de profissionais altamente qualificados, desenvolvemos soluções personalizadas que 
+                    transformam dados em insights valiosos e processos manuais em automações inteligentes.
+                </p>
+                <p style="font-size: 1.1rem; color: #666; line-height: 1.8;">
+                    Nosso compromisso é entregar resultados mensuráveis que impulsionem o crescimento e a eficiência 
+                    do seu negócio.
+                </p>
+            </div>
+            <div style="background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); border-radius: var(--border-radius); padding: 3rem; color: white; text-align: center; min-height: 350px; display: flex; align-items: center; justify-content: center;">
+                <div>
+                    <i class="fas fa-brain" style="font-size: 5rem; opacity: 0.3; margin-bottom: 1rem;"></i>
+                    <h3 style="font-size: 2rem;">Pulse</h3>
+                    <p style="font-size: 1.2rem; margin-top: 1rem;">Soluções Inteligentes em IA</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Missão, Visão e Valores -->
+    <section class="section-alt">
+        <div class="container">
+            <h2>Missão, Visão e Valores</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <i class="fas fa-bullseye"></i>
+                    <h3>Missão</h3>
+                    <p>
+                        Fornecer soluções inovadoras em IA e automação que transformem processos empresariais, 
+                        gerando valor tangível e sustentável para nossos clientes.
+                    </p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-telescope"></i>
+                    <h3>Visão</h3>
+                    <p>
+                        Ser a empresa referência em soluções de inteligência artificial no Brasil, reconhecida pela 
+                        excelência, inovação e impacto positivo nos negócios de nossos clientes.
+                    </p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-heart"></i>
+                    <h3>Valores</h3>
+                    <p>
+                        Inovação, Integridade, Excelência, Colaboração e Responsabilidade Social. Estes são os 
+                        pilares que guiam todas as nossas ações e decisões.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Diferenciais -->
+    <section class="container">
+        <h2>Por Que Nos Escolher</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+            <div style="padding: 2rem; border-left: 4px solid var(--primary-color);">
+                <h4 style="margin-bottom: 1rem; color: var(--dark-color);">
+                    <i class="fas fa-check-circle" style="color: var(--secondary-color); margin-right: 0.5rem;"></i>
+                    Expertise em IA
+                </h4>
+                <p style="color: #666;">Profissionais especializados em machine learning, deep learning e processamento de linguagem natural.</p>
+            </div>
+            <div style="padding: 2rem; border-left: 4px solid var(--primary-color);">
+                <h4 style="margin-bottom: 1rem; color: var(--dark-color);">
+                    <i class="fas fa-check-circle" style="color: var(--secondary-color); margin-right: 0.5rem;"></i>
+                    Soluções Personalizadas
+                </h4>
+                <p style="color: #666;">Cada projeto é único. Desenvolvemos soluções sob medida para suas necessidades específicas.</p>
+            </div>
+            <div style="padding: 2rem; border-left: 4px solid var(--primary-color);">
+                <h4 style="margin-bottom: 1rem; color: var(--dark-color);">
+                    <i class="fas fa-check-circle" style="color: var(--secondary-color); margin-right: 0.5rem;"></i>
+                    Suporte Contínuo
+                </h4>
+                <p style="color: #666;">Não paramos após a implementação. Oferecemos suporte e otimização contínua.</p>
+            </div>
+            <div style="padding: 2rem; border-left: 4px solid var(--primary-color);">
+                <h4 style="margin-bottom: 1rem; color: var(--dark-color);">
+                    <i class="fas fa-check-circle" style="color: var(--secondary-color); margin-right: 0.5rem;"></i>
+                    ROI Comprovado
+                </h4>
+                <p style="color: #666;">Nossas soluções geram retorno mensurável em produtividade, eficiência e receita.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Localização -->
+    <section class="section-alt">
+        <div class="container">
+            <h2>Nos Encontre</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
+                <div>
+                    <h3 style="margin-bottom: 1.5rem; color: var(--dark-color);">Localização</h3>
+                    <div style="padding: 1.5rem; background: white; border-radius: var(--border-radius); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);">
+                        <p style="margin-bottom: 1rem;">
+                            <i class="fas fa-map-marker-alt" style="color: var(--primary-color); margin-right: 0.5rem;"></i>
+                            <strong>Endereço:</strong>
+                        </p>
+                        <p style="color: #666; margin-bottom: 1.5rem; font-size: 1.1rem;">
+                            Rua Visconde de Quissama, 523<br>
+                            Macaé - RJ<br>
+                            Brasil
+                        </p>
+                        <p style="margin-bottom: 1rem;">
+                            <i class="fas fa-instagram" style="color: var(--primary-color); margin-right: 0.5rem;"></i>
+                            <strong>Redes Sociais:</strong>
+                        </p>
+                        <a href="https://instagram.com/pulse" target="_blank" style="color: var(--primary-color); text-decoration: none; font-size: 1.1rem;">
+                            @pulse
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="margin-bottom: 1.5rem; color: var(--dark-color);">Conecte-se Conosco</h3>
+                    <p style="color: #666; margin-bottom: 1.5rem; line-height: 1.8;">
+                        Quer conhecer mais sobre nossos serviços? Estamos aqui para ajudar! 
+                        Entre em contato através do formulário de contato ou nos encontre nas redes sociais.
+                    </p>
+                    <a href="{% url 'home:contato' %}" class="cta-button" style="display: inline-block;">
+                        <i class="fas fa-envelope"></i> Entre em Contato
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+

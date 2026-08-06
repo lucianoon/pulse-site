@@ -1,0 +1,100 @@
+{% extends 'home/base.html' %}
+
+{% block title %}Pulse - Soluções em IA{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>{{ company_tagline }}</h1>
+        <p>Transformamos dados em inteligência e processos em automação</p>
+        <a href="{% url 'home:servicos' %}" class="cta-button">
+            <i class="fas fa-arrow-right"></i> Conheça Nossos Serviços
+        </a>
+    </div>
+</section>
+
+<!-- Serviços -->
+<section class="container">
+    <h2>Nossos Serviços</h2>
+    <div class="cards-grid">
+        {% for service in services %}
+        <div class="card">
+            <i class="fas {{ service.icon }}"></i>
+            <h3>{{ service.title }}</h3>
+            <p>{{ service.description }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Casos de Sucesso -->
+<section class="section-alt">
+    <div class="container">
+        <h2>Casos de Sucesso</h2>
+        <div class="cards-grid">
+            {% for case in case_studies %}
+            <div class="card" style="text-align: left;">
+                <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                    <i class="fas {{ case.icon }}"
+                        style="font-size: 2rem; margin-right: 1rem; color: var(--primary-color);"></i>
+                    <h3 style="margin: 0;">{{ case.client }}</h3>
+                </div>
+                <p><strong>Desafio:</strong> {{ case.challenge }}</p>
+                <p><strong>Solução:</strong> {{ case.solution }}</p>
+                <p><strong>Resultados:</strong></p>
+                <ul style="padding-left: 1.5rem; margin-top: 0.5rem;">
+                    {% for result in case.results %}
+                    <li>{{ result }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Seção de Diferencial -->
+<section class="section-alt">
+    <div class="container">
+        <h2>Por Que Escolher Pulse?</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <i class="fas fa-lightbulb"></i>
+                <h3>Inovação</h3>
+                <p>Utilizamos as tecnologias mais avançadas em IA e machine learning para entregar soluções de ponta.
+                </p>
+            </div>
+            <div class="card">
+                <i class="fas fa-users"></i>
+                <h3>Equipe Experiente</h3>
+                <p>Profissionais especializados com anos de experiência em desenvolvimento e IA.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-handshake"></i>
+                <h3>Parcerias de Confiança</h3>
+                <p>Trabalhamos com nossos clientes como parceiros, buscando sempre o melhor resultado.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-rocket"></i>
+                <h3>Resultados Rápidos</h3>
+                <p>Implementamos soluções eficientes que geram resultados mensuráveis em curto prazo.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Final -->
+<section class="container">
+    <div style="text-align: center; padding: 3rem 0;">
+        <h2>Pronto para Transformar Seu Negócio?</h2>
+        <p style="font-size: 1.1rem; margin-bottom: 2rem; color: #666;">
+            Entre em contato conosco e descubra como a IA pode revolucionar seus processos.
+        </p>
+        <a href="{% url 'home:contato' %}" class="cta-button" style="display: inline-block;">
+            <i class="fas fa-envelope"></i> Entre em Contato
+        </a>
+    </div>
+</section>
+{% endblock %}
+
