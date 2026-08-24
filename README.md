@@ -1,5 +1,10 @@
 # Pulse - Soluções em IA
 
+[![CI](https://github.com/lucianoon/pulse-site/actions/workflows/ci.yml/badge.svg)](https://github.com/lucianoon/pulse-site/actions/workflows/ci.yml)
+[![Django 5.2](https://img.shields.io/badge/Django-5.2-092E20?logo=django&logoColor=white)](https://www.djangoproject.com/)
+[![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![Licença: MIT](https://img.shields.io/badge/licen%C3%A7a-MIT-green.svg)](LICENSE)
+
 Página web profissional desenvolvida em Django para a empresa Pulse, especializada em soluções de inteligência artificial.
 
 ## 📋 Características
