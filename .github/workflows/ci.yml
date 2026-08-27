@@ -30,3 +30,25 @@ jobs:
 
       - name: Compile Python sources
         run: python -m compileall pulse_project home
+
+      # O gunicorn serve o site em produção (veja o Procfile) e nada o exercitava:
+      # os passos acima usam o servidor de desenvolvimento do Django. Sem isto, um
+      # bump de major do gunicorn passa pela CI sem ser executado uma única vez.
+      - name: Gunicorn serves the app
+        run: |
+          gunicorn pulse_project.wsgi --log-file - --bind 127.0.0.1:8000 &
+          GUNICORN_PID=$!
+          trap 'kill $GUNICORN_PID 2>/dev/null || true' EXIT
+          for i in $(seq 1 30); do
+            if curl --fail --silent --output /dev/null http://127.0.0.1:8000/; then
+              echo "gunicorn respondeu na tentativa $i"
+              break
+            fi
+            if ! kill -0 $GUNICORN_PID 2>/dev/null; then
+              echo "gunicorn morreu antes de responder"
+              exit 1
+            fi
+            sleep 1
+          done
+          curl --fail --silent --show-error --output /dev/null http://127.0.0.1:8000/
+          curl --fail --silent --show-error --output /dev/null http://127.0.0.1:8000/contato/

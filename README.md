@@ -47,7 +47,7 @@ Página web profissional desenvolvida em Django para a empresa Pulse, especializ
 
 3. **Instale as dependências**
    ```bash
-   pip install django djangorestframework django-cors-headers pillow
+   pip install -r requirements.txt
    ```
 
 4. **Execute as migrações**
