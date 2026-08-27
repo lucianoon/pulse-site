@@ -9,12 +9,13 @@ Página web profissional desenvolvida em Django para a empresa Pulse, especializ
 
 ## 📋 Características
 
-- **Design Responsivo**: Interface moderna e adaptável para todos os dispositivos
+- **Design Responsivo**: breakpoints para desktop (1920px+), tablet (768-1024px) e mobile (320-767px)
 - **Múltiplas Páginas**: Início, Serviços, Sobre e Contato
 - **Formulário de Contato**: Sistema funcional para receber mensagens de clientes
 - **Integração com Redes Sociais**: Links para Instagram (@pulse)
 - **Otimizado para SEO**: Meta tags e estrutura semântica
 - **Animações Suaves**: Transições e efeitos visuais profissionais
+- **Proteções padrão do Django ativas**: CSRF, XSS, SQL injection e headers de segurança
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -23,33 +24,6 @@ Página web profissional desenvolvida em Django para a empresa Pulse, especializ
 - **Database**: SQLite (desenvolvimento)
 - **Icons**: Font Awesome 6.4.0
 - **Fonts**: Google Fonts (Poppins)
-
-## 📁 Estrutura do Projeto
-
-```
-pulse_project/
-├── pulse_project/          # Configurações principais do Django
-│   ├── settings.py           # Configurações do projeto
-│   ├── urls.py              # URLs principais
-│   └── wsgi.py              # WSGI para produção
-├── home/                      # Aplicação principal
-│   ├── views.py             # Views das páginas
-│   ├── urls.py              # URLs da aplicação
-│   └── templates/           # Templates HTML
-├── templates/                 # Templates base
-│   └── home/
-│       ├── base.html        # Template base com header/footer
-│       ├── index.html       # Página inicial
-│       ├── servicos.html    # Página de serviços
-│       ├── sobre.html       # Página sobre
-│       └── contato.html     # Página de contato
-├── static/                    # Arquivos estáticos
-│   ├── css/
-│   ├── js/
-│   └── images/
-├── manage.py                  # Script de gerenciamento Django
-└── db.sqlite3                # Banco de dados (desenvolvimento)
-```
 
 ## 🛠️ Instalação e Configuração
 
@@ -232,36 +206,10 @@ python manage.py test
 python manage.py shell
 ```
 
-## 📱 Responsividade
-
-O site é totalmente responsivo e funciona perfeitamente em:
-- Desktop (1920px+)
-- Tablet (768px - 1024px)
-- Mobile (320px - 767px)
-
-## 🔐 Segurança
-
-- CSRF protection ativado
-- XSS protection
-- SQL injection protection
-- Headers de segurança configurados
-
-## 📞 Informações de Contato
-
-**Pulse - Soluções em IA**
-
-- 📱 Instagram: [@pulse](https://instagram.com/pulse)
-
 ## 📝 Licença
 
 Este projeto é propriedade da Pulse.
 
-## 🤝 Suporte
-
-Para suporte e dúvidas, entre em contato através do formulário no site ou pelo Instagram.
-
 ---
 
 **Desenvolvido com ❤️ para Pulse**
-
-
