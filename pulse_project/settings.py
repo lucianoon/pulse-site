@@ -12,20 +12,44 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 
+from decouple import Csv, config
+from django.core.exceptions import ImproperlyConfigured
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
+# Configuração por ambiente. O DEPLOY.md sempre documentou DEBUG, SECRET_KEY e
+# ALLOWED_HOSTS como variáveis de ambiente nos três cenários de deploy, mas este
+# arquivo não as lia — definir as variáveis não tinha efeito algum.
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3u)w#ty&_qes(1(voz*qfxli_l2^5ze$tz44m*h*!)dwhmq2$t'
+# Padrão seguro: sem DEBUG explícito, assume produção.
+DEBUG = config('DEBUG', default=False, cast=bool)
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# Em produção a chave é obrigatória e vem do ambiente. Em desenvolvimento, uma
+# chave efêmera é gerada por processo: dispensa configuração para rodar local e
+# não cria valor fixo que possa vazar para um repositório outra vez.
+SECRET_KEY = config('SECRET_KEY', default='')
+if not SECRET_KEY:
+    if not DEBUG:
+        raise ImproperlyConfigured(
+            'SECRET_KEY não definida. Gere uma chave e exporte-a no ambiente: '
+            'python -c "from django.core.management.utils import '
+            'get_random_secret_key; print(get_random_secret_key())"'
+        )
+    from django.core.management.utils import get_random_secret_key
 
-ALLOWED_HOSTS = ['*']
+    SECRET_KEY = get_random_secret_key()
+
+# Sem lista explícita: localhost em desenvolvimento, e nada em produção — o
+# Django então recusa qualquer Host, o que falha alto em vez de aceitar todos.
+ALLOWED_HOSTS = config(
+    'ALLOWED_HOSTS',
+    default='localhost,127.0.0.1,[::1]' if DEBUG else '',
+    cast=Csv(),
+)
+
+CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS', default='', cast=Csv())
 
 
 # Application definition
@@ -127,3 +151,16 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+# Endurecimento aplicado somente fora de DEBUG, para não exigir HTTPS no
+# desenvolvimento local. Cobre os avisos de `manage.py check --deploy`.
+if not DEBUG:
+    SECURE_SSL_REDIRECT = config('SECURE_SSL_REDIRECT', default=True, cast=bool)
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_HSTS_SECONDS = config('SECURE_HSTS_SECONDS', default=31536000, cast=int)
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_REFERRER_POLICY = 'same-origin'
+    # Atrás de proxy/load balancer que termina o TLS (Railway, Heroku, nginx).
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')

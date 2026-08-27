@@ -10,6 +10,18 @@ jobs:
   validate:
     runs-on: ubuntu-latest
 
+    # A configuração agora vem do ambiente (veja .env.example). Sem DEBUG
+    # explícito o settings assume produção e exige SECRET_KEY, então a CI roda
+    # justamente no modo de produção — que é o que vale verificar — com uma
+    # chave descartável gerada só para esta execução.
+    env:
+      DEBUG: 'False'
+      SECRET_KEY: 'ci-only-throwaway-key-not-used-anywhere-else-000000000000'
+      ALLOWED_HOSTS: 'localhost,127.0.0.1,testserver'
+      # O passo do gunicorn fala HTTP em localhost; sem isto o redirect para
+      # HTTPS responderia 301 e o curl não veria a página.
+      SECURE_SSL_REDIRECT: 'False'
+
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -24,6 +36,13 @@ jobs:
 
       - name: Django system check
         run: python manage.py check
+
+      # Impede regressão no endurecimento de produção. Roda com o redirect de
+      # HTTPS ligado, ao contrário dos passos seguintes.
+      - name: Django deployment check
+        run: python manage.py check --deploy --fail-level WARNING
+        env:
+          SECURE_SSL_REDIRECT: 'True'
 
       - name: Run tests
         run: python manage.py test -v 2
